@@ -5,7 +5,7 @@ train/predict split on 500,000+ real retail transactions. Built on top of
 the UCI Online Retail Dataset with a Random Forest classifier and iterative,
 error-driven feature engineering.
 
-   Project Overview
+Project Overview
 Rather than defining churn using arbitrary segment labels, this project uses
 a proper temporal split to create ground-truth churn labels:
 
@@ -17,11 +17,13 @@ a proper temporal split to create ground-truth churn labels:
 This makes the model genuinely predictive: given 9 months of purchase
 behavior, predict whether a customer will return in the next 3 months.
 
-   Key Results
+ 
+  Key Results
 - Final Accuracy: 68.10% | ROC-AUC: 0.7343
 - 77% of actual churners correctly identified (recall)
 - £1,170,268 in combined revenue flagged across HIGH and MEDIUM risk tiers
 - Improved from 62.27% baseline through four disciplined iterations
+
 
    Performance Progression
 
@@ -32,7 +34,8 @@ behavior, predict whether a customer will return in the next 3 months.
 | + Repeat flag + Velocity | 66.30% | 0.7274 |
 | + Error-driven features | 68.10% | 0.7343 |
 
-   Key Findings
+
+  Key Findings
 - Monetary value (0.132), Frequency (0.115), UniqueProducts (0.114),
   and UniqueMonths (0.105) are the four strongest churn predictors
 - Recency ranked only 6th — contrary to standard RFM assumptions,
@@ -43,7 +46,8 @@ behavior, predict whether a customer will return in the next 3 months.
 - Features like `RecencyRatio` and `PurchaseConsistency` were engineered
   directly from error analysis findings — not added arbitrarily
 
-   Project Structure
+
+  Project Structure
 
 - Cell 1 — Imports & Setup
 - Cell 2 — Data Loading & Cleaning
@@ -56,7 +60,8 @@ behavior, predict whether a customer will return in the next 3 months.
 - Cell 9 — Phase 4: Business Output & Risk Tier Scoring
 - Cell 10 — Final Summary & Business Recommendations
 
-   Features Used (Final Model — 12 features)
+
+ Features Used (Final Model — 12 features)
 
 | Feature | Description | Type |
 |---|---|---|
@@ -73,6 +78,7 @@ behavior, predict whether a customer will return in the next 3 months.
 | PurchaseConsistency | Std deviation of inter-purchase gaps | Error-driven |
 | RecentFrequencyRatio | Recent vs early purchase frequency | Error-driven |
 
+
 Business Output
 Every customer receives a churn probability score and is assigned to a
 risk tier:
@@ -84,6 +90,7 @@ risk tier:
 | LOW RISK | 30–50% | Monitoring, light engagement |
 | SAFE | < 30% | Standard communications |
 
+  
   Known Limitations
 - Prediction window (Oct–Dec) overlaps with holiday season which may
   inflate retention rates due to seasonal purchasing behavior
@@ -91,6 +98,7 @@ risk tier:
   data beyond transaction history alone
 - 68% accuracy on a genuinely noisy, real-world churn problem with pure
   transaction data is a realistic and honest result
+
 
   Tech Stack
 - Python
@@ -101,7 +109,8 @@ risk tier:
 - Seaborn
 - Google Colab
 
-  How to Run
+
+   How to Run
 1. Install dependencies:
    pip install pandas numpy scikit-learn matplotlib seaborn openpyxl
 2. Download the dataset from:
@@ -109,6 +118,7 @@ risk tier:
 3. Upload `Online Retail.xlsx` to your Colab session
 4. Run all cells in order
 
-  Data Source
+ 
+Data Source
 UCI Machine Learning Repository — Online Retail Dataset
 541,909 transactions from a UK-based online retailer (2010–2011)
